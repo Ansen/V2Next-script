@@ -85,11 +85,11 @@ function run() {
         }
       }
 
-      let as: any = wrapper.find('.header > a')
-      if (as.length) {
-        // console.log('as[1].innerText', as[1])
-        post.node.title = as[1].innerText
-        post.node.url = as[1].href
+      let as: any = wrapper.find('.header a').toArray()
+      let v2exIndex = as.findIndex(a => a.innerText === 'V2EX')
+      if (v2exIndex !== -1 && as[v2exIndex + 1]) {
+        post.node.title = as[v2exIndex + 1].innerText
+        post.node.url = as[v2exIndex + 1].href
       }
 
       let aName = wrapper.find('.header small.gray a:nth-child(1)')
